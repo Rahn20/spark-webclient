@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+}
+
+html {
+    word-wrap: break-word;
+    word-spacing: 1px;
+}
+
+body {
+    background-color: #e6e6e6;
+    width: 80%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 923px) {
+    body {
+        width: 100%;
+    }
+}
+

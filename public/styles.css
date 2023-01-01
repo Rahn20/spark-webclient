@@ -1,1 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+}
 
+html {
+  word-wrap: break-word;
+  word-spacing: 1px;
+}
+
+body {
+  background-color: #e6e6e6;
+  width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 923px) {
+  body {
+    width: 100%;
+  }
+}
+.home {
+  width: 80%;
+  margin: auto;
+}
+.home .content {
+  width: 70%;
+  margin: auto;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  padding: 20px 10px 0;
+  text-align: center;
+  margin-top: 30px;
+  background-color: #d9d9d9;
+}
+.home .content h3 {
+  padding: 10px;
+}
+.home .content fieldset #email {
+  padding: 5px 15px;
+}
+.home .content fieldset #password {
+  padding: 0 5px;
+}
+.home .content fieldset input[type=password], .home .content fieldset input[type=email] {
+  padding-right: 10px;
+}
+.home .content fieldset button[type=submit] {
+  background-color: #4CAF50;
+  cursor: pointer;
+  width: 10rem;
+}
+.home .content fieldset #login {
+  padding: 3px 0 0 15px;
+}
+.home .content p {
+  margin: 5px 10px 10px 0;
+}
+.home .content a {
+  color: #000066;
+}
+
+button[type=submit]:hover {
+  background-color: #45a049;
+}
+
+input[type=password], input[type=email], button[type=submit] {
+  width: 13rem;
+  padding: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/**
+input[type=text] {
+    width: 30%;
+    padding: 7px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+*/
+@media only screen and (max-width: 923px) {
+  .home {
+    width: 100%;
+    padding-left: 5px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .home .content {
+    width: 100%;
+  }
+}
