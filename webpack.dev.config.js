@@ -3,6 +3,7 @@
  */
 
 const path = require('path');
+
 const port = 1338;
 const openBrowser = false;
 
@@ -19,10 +20,13 @@ module.exports = {
         port: port,
         open: openBrowser,
         host: 'localhost',
-        //historyApiFallback: {
-        //    index: 'index.html',
-        //},
-
-        static: 'public',
+        historyApiFallback: {
+            index: 'index.html',
+        },
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
+        hot: true,
+        compress: true,
     }
 };
