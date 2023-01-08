@@ -1,14 +1,8 @@
-/**
- * 
- * 
-*/
-
-
 "use strict";
 
-import m from 'mithril';
+//import m from 'mithril';
 
-let history = {
+const History = {
     url: "",
     historyData: [],
 
@@ -16,7 +10,7 @@ let history = {
         // get customer's trip history
         // add to list
     },
-}
+};
 
 
-export { history };
+export { History };

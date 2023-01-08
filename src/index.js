@@ -1,5 +1,5 @@
 /**
- * Contains all routes 
+ * Contains all routes
  */
 
 "use strict";
@@ -7,69 +7,68 @@
 import m from "mithril";
 
 // Navigation/layout
-import { layout } from "./views/layout.js";
+import { Layout } from "./views/layout.js";
 
 // view pages
-import { history } from "./views/history.js";
-import { payment } from "./views/payment.js";
-import { register } from "./views/register.js";
-import { account } from "./views/account.js";
-import { home } from "./views/home.js";
+import { History } from "./views/history.js";
+import { Payment } from "./views/payment.js";
+import { Register } from "./views/register.js";
+import { Account } from "./views/account.js";
+import { Home } from "./views/home.js";
 
 // models
-import { auth } from "./models/auth.js";
+import { Auth } from "./models/auth.js";
 
 
 m.route(document.body, "/", {
     "/": {
         render: function() {
-            if (auth.authenticated == true) {
-                return m(layout, { nav: "#!/" }, m(account));
+            if (Auth.authenticated == true) {
+                return m(Layout, { nav: "#!/" }, m(Account));
             }
 
-            return m(home);
+            return m(Home);
         }
     },
 
-
     "/payment": {
         render: function() {
-            if (auth.authenticated == true) {
-                return m(layout, { nav: "#!/payment" }, m(payment));
+            if (Auth.authenticated == true) {
+                return m(Layout, { nav: "#!/payment" }, m(Payment));
             }
 
-            m.route.set('/')
+            m.route.set('/');
         }
     },
 
 
     "/register": {
         render: function() {
-            if (auth.authenticated == true) {
-                return m(layout, { nav: "#!/" }, m(account));
+            if (Auth.authenticated == true) {
+                return m(Layout, { nav: "#!/" }, m(Account));
             }
 
-            return m(register);
+            return m(Register);
         }
     },
 
     "/logout": {
         render: function() {
-            if (auth.authenticated == true) {
-                auth.authenticated = false
+            if (Auth.authenticated == true) {
+                Auth.authenticated = false;
             }
 
-            m.route.set('/')
+            m.route.set('/');
         }
     },
 
     "/history": {
         render: function() {
-            if (auth.authenticated == true) {
-                return m(layout, { nav: "#!/history" }, m(history));
+            if (Auth.authenticated == true) {
+                return m(Layout, { nav: "#!/history" }, m(History));
             }
 
-            m.route.set('/')
+            m.route.set('/');
         },
     }
 });

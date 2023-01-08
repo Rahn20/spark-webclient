@@ -1,14 +1,8 @@
-/**
- * 
- * 
-*/
-
-
 "use strict";
 
-import m from 'mithril';
+//import m from 'mithril';
 
-let payment = {
+const Payment = {
     url: "",
     paymentData: [],
 
@@ -22,9 +16,9 @@ let payment = {
     },
 
     changePaymentMethod: function() {
-        // 
+        //
     },
-}
+};
 
 
-export { payment };
+export { Payment };

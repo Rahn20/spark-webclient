@@ -6,16 +6,16 @@
 
 import m from "mithril";
 
-let account = {
+const Account = {
     oninit: function() {
         // load customer's info -> Models
     },
 
     view: function () {
         // show customer's account info
-        return m("h3", "Kontoöversikt");
+        return m("h2", "Kontoöversikt");
     },
-}
+};
 
 
-export { account };
+export { Account };

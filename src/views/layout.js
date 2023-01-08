@@ -6,8 +6,8 @@
 
 import m from "mithril";
 
-let layout = {
-    
+const Layout = {
+
     // Only displayed when the customer is logged in
     links: [
         { name: "konto", route: "#!/" },
@@ -19,17 +19,18 @@ let layout = {
         let nav = vnode.attrs.nav;
 
         return [
-            m("h1", "Spark"),
-            m("nav.top-nav", layout.links.map(function(link) {
+            m("div.top-header", m("h1", "Spark")),
+            m("nav.top-nav", m("ul", Layout.links.map(function(link) {
                 return m("li", [
                     m("a", {
                         href: link.route,
                         class: nav == link.route ? "active" : null
                     }, link.name)
-                ])
+                ]);
             }),
-            
-            m("p", m("a", { href: "#!/logout" }, "Logga ut"))),
+
+            m("li.logout", m("a", { href: "#!/logout" }, "Logga ut"))),
+            ),
 
             m("main", vnode.children),
 
@@ -40,4 +41,4 @@ let layout = {
     },
 };
 
-export { layout };
+export { Layout };

@@ -6,17 +6,17 @@
 
 import m from "mithril";
 
-let history = {
+const History = {
     oninit: function() {
         // load user's history -> Models
     },
 
     view: function () {
         // show user's history
-        return m("h3", "Historik över resorna");
+        return m("h2", "Historik över resorna");
     },
 
-}
+};
 
 
-export { history };
+export { History };
