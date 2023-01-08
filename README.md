@@ -16,23 +16,24 @@ Your system must have [Docker](https://www.docker.com/get-started/) enabled.
 
 ### Installation
 
-Clone this repo, go to spark-webclient and run:
+To run the webclient locally, you need [Nodejs](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed on your machine. Once you have Node.js and npm installed clone this repo, go to spark-webclient and run:
 
 ```
 npm install
 npm run dev
 ```
 
-If you change the style then you can run ```npm run style``` before ```npm run build``` or dev.
+If you change the style, then you can run ```npm run style```.
 
-Go to **http://localhost:1338** to view the webpage, if you want to change the port, you can do it from webpack.dev.config.js. If you get any issues that the server is still running in the background even when you press CTRL + C to stop it. Then you need to stop it manually by using the *taskkill* command or change the port number.
+Navigate to ```http://localhost:1338``` to view the webpage. The app will automatically reload if you change any of the source files. If you want to change the port, you can do it from webpack.dev.config.js.
+If you get any issues that the server is still running in the background even when you press CTRL + C to stop it. Then you need to stop it manually by using the *taskkill* command or change the port number if you want.
 Use the *netstat* command to list all the active connections and the ports they are using. 
 
 ```
-netstat -a -o -n
+netstat -a -o -n | grep 127.0.0.1:1338
 ```
 
-We are looking for local address 127.0.0.1:1338, check the PID that's the connection has and run:
+We are looking for local address 127.0.0.1:1338 that has the state LISTENING, check the PID that's the connection has and run:
 
 ```
 taskkill /F /PID <process-id>
