@@ -1,40 +1,30 @@
-imports:
-    - node
-
-
 filter:
     excluded_paths: [test/*, public/*]
 
 
-
 build:
     nodes:
-        my-test:
-            environment:
-                node:
-                    version: 16.13.0
 
-            
-        # Install dependencies with npm
-        dependencies:
-            override:
-                - npm install
+        # Use a cache to speed up builds
+        modules:
+            cache:
+                directories:
+                    - node_modules
+
+        analysis:
+            tests:
+                override:
+                    - js-scrutinizer-run
 
 
         # run test and coverage
-        tests:
-            override:
-                - 
-                    command: npm run test
-                    coverage:
-                        file: coverage/clover.xml
-                        format: clover
+        test-coverage:
+            tests:
+                before:
+                    - npm install
 
-            
-        # Use a cache to speed up builds
-        cache:
-            directories:
-                - node_modules
-            key:
-                files:
-                    - package-lock.json
+                override:
+                    - command: npm run test
+                      coverage:
+                        file: "coverage/clover.xml"
+                        format: "clover"

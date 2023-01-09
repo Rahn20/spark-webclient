@@ -4,7 +4,7 @@
   "description": "Spark project for the course Vteam at BTH, this is Web client for customers.",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/*.js'  --timeout 10000",
+    "test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/*.js' --timeout 10000",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "style": "sass src/base.scss public/styles.css --no-source-map",

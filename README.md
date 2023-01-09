@@ -1,5 +1,5 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Rahn20/spark-webclient/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Rahn20/spark-webclient/tree/main)
-[![Code Coverage](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/?branch=main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/badges/build.png?b=main)](https://scrutinizer-ci.com/g/Rahn20/spark-webclient/build-status/main)
 
