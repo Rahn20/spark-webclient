@@ -1,0 +1,47 @@
+import:
+  - node
+
+filter:
+  excluded_paths: [test/*, public/*]
+
+
+# Enable static analysis
+analyzer:
+  tools:
+    eslint:
+      enabled: true
+
+
+build:
+  node_js:
+    version: '16'
+
+    # Install dependencies with npm
+    dependencies:
+      install:
+        override:
+          - npm install
+
+      # Save dependencies in package-lock.json
+      save: true
+
+
+    # Run tests and coverage
+    test:
+      override:
+        - npm run test
+
+
+    # Upload coverage report to Scrutinizer
+    coverage:
+      file: coverage/clover.xml
+      format: clover
+
+
+    # Use a cache to speed up builds
+    cache:
+      directories:
+        - node_modules
+      key:
+        files:
+          - package-lock.json

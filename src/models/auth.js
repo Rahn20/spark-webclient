@@ -1,12 +1,12 @@
 "use strict";
 
-import m from 'mithril';
+const m = require('mithril');
 
 
 const Auth = {
     url: "http://localhost:1337/api/v1/auth/",
     token: "",
-    authenticated: true,
+    authenticated: false,
     res: "",
     registerData: [],
 
@@ -38,7 +38,7 @@ const Auth = {
             Auth.user.firstname = result.user.first_name;
             Auth.user.lastname = result.user.last_name;
             Auth.user.username = result.user.username;
-            Auth.user.phone = result.user.username;
+            Auth.user.phone = result.user.phone;
             Auth.user.id = result.user.id;
             Auth.authenticated = true;
         } catch (e) {
@@ -96,5 +96,4 @@ const Auth = {
     }
 };
 
-
-export { Auth };
+module.exports = Auth;

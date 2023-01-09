@@ -4,18 +4,23 @@
   "description": "Spark project for the course Vteam at BTH, this is Web client for customers.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/*.js'  --timeout 10000",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "style": "sass src/base.scss public/styles.css --no-source-map",
     "fix": "npx eslint --fix \"src/**/*.js\"",
-    "lint": "npx eslint \"src/**/*.js\""
+    "lint": "npx eslint \"src/**/*.js\"",
+    "clean-all": "rm -rf node_modules package-lock.json coverage .nyc_output"
   },
   "keywords": [
     "mithril",
     "sass",
     "webpack"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahn20/spark-webclient.git#main"
+  },
   "author": "Ranim Hanna",
   "license": "ISC",
   "dependencies": {
@@ -23,8 +28,14 @@
     "sass": "^1.57.1"
   },
   "devDependencies": {
+    "@types/sinon": "^10.0.13",
+    "chai": "^4.3.7",
     "eslint": "^8.31.0",
     "eslint-plugin-react": "^7.31.11",
+    "jsdom": "^21.0.0",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "sinon": "^15.0.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"

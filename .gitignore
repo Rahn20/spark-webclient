@@ -3,5 +3,7 @@ node_modules/
 
 # build folders
 build/
+coverage/
+.nyc_output
 
 package-lock.json
