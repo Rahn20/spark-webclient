@@ -1,0 +1,13 @@
+{
+  "reporter": [
+    "lcov",
+    "html",
+    "text",
+    "clover"
+  ],
+  "check-coverage": true,
+  "include": [
+    "src/models/*"
+  ],
+  "cache": true
+}

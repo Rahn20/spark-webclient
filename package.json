@@ -4,13 +4,14 @@
   "description": "Spark project for the course Vteam at BTH, this is Web client for customers.",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text --reporter=clover mocha 'test/*.js' --timeout 10000",
+    "test": "nyc --all mocha",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "style": "sass src/base.scss public/styles.css --no-source-map",
     "fix": "npx eslint --fix \"src/**/*.js\"",
     "lint": "npx eslint \"src/**/*.js\"",
-    "clean-all": "rm -rf node_modules package-lock.json coverage .nyc_output"
+    "clean-all": "rm -rf node_modules package-lock.json coverage .nyc_output",
+    "clean-cov": "rm -rf coverage .nyc_output"
   },
   "keywords": [
     "mithril",
