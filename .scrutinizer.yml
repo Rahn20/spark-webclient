@@ -1,8 +1,14 @@
+checks:
+    javascript: true
+
 filter:
     excluded_paths: [test/*, public/*]
 
 
 build:
+    environment:
+        node: 16.13.0
+
     nodes:
 
         # Use a cache to speed up builds
