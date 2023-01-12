@@ -1,7 +1,6 @@
 "use strict";
 
-const m = require('mithril');
-
+const m = require("mithril");
 
 const Auth = {
     url: "http://localhost:1337/api/v1/auth/",
@@ -29,12 +28,10 @@ const Auth = {
                 url: `${Auth.url}login`,
                 body: {
                     email: Auth.user.email,
-                    password: Auth.user.password
-                }
+                    password: Auth.user.password,
+                },
             });
 
-            Auth.user.password = "";
-            Auth.token = result.user.token;
             Auth.user.firstname = result.user.first_name;
             Auth.user.lastname = result.user.last_name;
             Auth.user.username = result.user.username;
@@ -42,11 +39,11 @@ const Auth = {
             Auth.user.id = result.user.id;
             Auth.authenticated = true;
         } catch (e) {
-            Auth.res = "Något gick fel! antigen lösenordet eller mailadressen är fel.";
+            Auth.res =
+                "Något gick fel! antigen lösenordet eller mailadressen är fel.";
             console.log(e);
         }
     },
-
 
     // register new customer
     register: async (customers) => {
@@ -67,7 +64,7 @@ const Auth = {
                         firstName: Auth.registerData["firstName"],
                         lastName: Auth.registerData["lastName"],
                         roleId: "2",
-                    }
+                    },
                 });
 
                 Auth.registerData = [];
@@ -77,8 +74,33 @@ const Auth = {
             }
         }
     },
+    loginWithGoogle: () => {
+        window.location.href = `${Auth.url}/google`;
+    },
+    checkAuth: () => {
+        return m
+            .request({
+                method: "GET",
+                url: `${Auth.url}/success`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            })
+            .then((res) => {
+                if (res.status === 200 && res.user) {
+                    console.log(res.user);
 
-
+                    Auth.user.id = res.user.id;
+                    Auth.user.firstname = res.user.first_name;
+                    Auth.user.lastname = res.user.last_name;
+                    Auth.user.username = res.user.username;
+                    Auth.user.phone = res.user.phone;
+                    Auth.user.email = res.user.email;
+                    Auth.user = Auth.authenticated = true;
+                }
+            });
+    },
     // Returns true if the username or email address exists.
     checkUser: (customers) => {
         let email = Auth.registerData["email"];
@@ -86,14 +108,17 @@ const Auth = {
         let res = false;
 
         for (let i = 0; i < customers.length; i++) {
-            if (customers[i].user.username == username || customers[i].user.email == email) {
+            if (
+                customers[i].user.username == username ||
+                customers[i].user.email == email
+            ) {
                 res = true;
                 break;
             }
         }
 
         return res;
-    }
+    },
 };
 
-module.exports = Auth;
+export { Auth };
