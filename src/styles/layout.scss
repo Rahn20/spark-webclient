@@ -1,24 +1,44 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0 none;
-}
+// common layout in all pages
 
 html {
     word-wrap: break-word;
-    word-spacing: 1px;
+    word-spacing: 4px;
 }
 
 body {
-    background-color: #e6e6e6;
-    width: 80%;
-    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-@media only screen and (max-width: 923px) {
-    body {
-        width: 100%;
+#startimage {
+    max-width: 100%;
+    opacity: 1;
+}
+
+
+// style nav 
+.navbar-nav {
+    a {
+        font-size: 18px;
     }
 }
 
+// main
+.container {
+    h2 {
+        margin-top: 30px;
+    }
+
+    padding-bottom: 6rem;
+}
+
+// style footer
+footer {
+    background-color: #bfbfbf;
+    padding: 1.5rem;
+    text-align: center;
+    color: #000;
+    width: 100%;
+    margin-top: auto;
+}
