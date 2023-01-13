@@ -1,0 +1,55 @@
+
+.container {
+    #profile {
+        width: 50%;
+        margin: auto;
+
+
+        .circle-border {
+            width: 150px;
+            height: 150px;
+            border: 1 solid #ffcccc;
+            border-radius: 50%;
+            margin: auto;
+            background-color: #e6ffe6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            p {
+                
+                color: #000;
+                font-size: 30px;
+                text-align: center;
+            }
+            
+        }
+    
+        .profile {
+            ul {
+                list-style-type: none;
+    
+                li {
+                    border-bottom: 5px solid #595959;
+                    padding: 10px;
+                }
+            }
+        }
+    
+        .account {
+            h4 {
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 944px) {
+    .container {
+        #profile {
+            width: 100%;
+        }
+    }
+}
