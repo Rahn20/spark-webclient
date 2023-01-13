@@ -1,0 +1,191 @@
+html {
+  word-wrap: break-word;
+  word-spacing: 4px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#startimage {
+  max-width: 100%;
+  opacity: 1;
+}
+
+.navbar-nav a {
+  font-size: 18px;
+}
+
+.container {
+  padding-bottom: 6rem;
+}
+.container h2 {
+  margin-top: 30px;
+}
+
+footer {
+  background-color: #bfbfbf;
+  padding: 1.5rem;
+  text-align: center;
+  color: #000;
+  width: 100%;
+  margin-top: auto;
+}
+
+.home {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  text-align: center;
+}
+.home .content {
+  width: 40rem;
+  margin: auto;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  padding: 30px 0 30px 0;
+  margin-top: 30px;
+}
+.home .content .login_content {
+  width: 15rem;
+  margin: auto;
+  text-align: left;
+}
+.home .content .login_content fieldset input[type=password], .home .content .login_content fieldset input[type=email], .home .content .login_content fieldset button[type=submit] {
+  width: 100%;
+  padding: 6px 0;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.home .content .login_content #google_login {
+  margin: 15px 0 30px 0;
+}
+.home .content a {
+  font-size: 19px;
+}
+
+@media only screen and (max-width: 1207px) {
+  .home {
+    width: 100%;
+    padding-left: 15px;
+    text-align: left;
+  }
+  .home #register_text {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 664px) {
+  .home .content {
+    width: 100%;
+  }
+}
+#payments_info ul {
+  display: inline-flex;
+  list-style-type: none;
+  padding: 0;
+}
+#payments_info ul li {
+  border: 1px solid #333;
+  padding: 2rem;
+}
+
+.payment_method #payment_method {
+  padding: 6px;
+  margin: 10px;
+}
+
+.payment_balance {
+  padding-bottom: 15px;
+}
+.payment_balance #payment_balance {
+  padding: 3px;
+  margin: 10px;
+}
+.payment_balance .payment_balance_label {
+  padding-right: 52px;
+}
+
+.container #profile {
+  width: 50%;
+  margin: auto;
+}
+.container #profile .circle-border {
+  width: 150px;
+  height: 150px;
+  border: 1 solid #ffcccc;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #e6ffe6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container #profile .circle-border p {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+}
+.container #profile .profile ul {
+  list-style-type: none;
+}
+.container #profile .profile ul li {
+  border-bottom: 5px solid #595959;
+  padding: 10px;
+}
+.container #profile .account h4 {
+  text-align: center;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 944px) {
+  .container #profile {
+    width: 100%;
+  }
+}
+#register_page {
+  width: 30rem;
+  margin: auto;
+}
+#register_page .register {
+  padding: 16px;
+  /* Full-width input fields */
+  /* Set a style for the submit button */
+}
+#register_page .register .input[type=text], #register_page .register .input[type=password], #register_page .register .input[type=email], #register_page .register .input[type=tel] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  color: #000;
+}
+#register_page .register .input[type=text]:focus,
+#register_page .register .input[type=password]:focus .input[type=email]:focus,
+#register_page .register .input[type=tel]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+#register_page .register .registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+#register_page .register hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+#register_page .register .registerbtn:hover {
+  opacity: 1;
+}
