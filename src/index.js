@@ -1,39 +1,41 @@
 /**
- * Contains all routes
+ * Contains all routes.
  */
 
 "use strict";
 
-import m from "mithril";
+const m = require('mithril');
 
 // Navigation/layout
-import { Layout } from "./views/layout.js";
+const Layout = require('./views/layout.js');
 
 // view pages
-import { History } from "./views/history.js";
-import { Payment } from "./views/payment.js";
-import { Register } from "./views/register.js";
-import { Account } from "./views/account.js";
-import { Home } from "./views/home.js";
+const History = require('./views/history.js');
+const Payment = require('./views/payment.js');
+const Register = require('./views/register.js');
+const Profile = require('./views/profile.js');
+const Home = require('./views/home.js');
 
 // models
-import { Auth } from "./models/auth.js";
+const Auth = require('./models/auth.js');
 
 
 m.route(document.body, "/", {
     "/": {
-        render: function() {
-            if (Auth.authenticated == true) {
-                return m(Layout, { nav: "#!/" }, m(Account));
+        render: () => {
+            if (Auth.authenticated) {
+                return m(Layout, { nav: "#!/" }, m(Profile));
             }
 
+            //console.log(localStorage.getItem("id"));
             return m(Home);
         }
     },
 
+
     "/payment": {
-        render: function() {
-            if (Auth.authenticated == true) {
+        render: () => {
+            if (Auth.authenticated) {
                 return m(Layout, { nav: "#!/payment" }, m(Payment));
             }
 
@@ -43,9 +45,9 @@ m.route(document.body, "/", {
 
 
     "/register": {
-        render: function() {
-            if (Auth.authenticated == true) {
-                return m(Layout, { nav: "#!/" }, m(Account));
+        render: () => {
+            if (Auth.authenticated) {
+                return m(Layout, { nav: "#!/" }, m(Profile));
             }
 
             return m(Register);
@@ -53,18 +55,17 @@ m.route(document.body, "/", {
     },
 
     "/logout": {
-        render: function() {
-            if (Auth.authenticated == true) {
+        render: () => {
+            if (Auth.authenticated) {
                 Auth.authenticated = false;
             }
-
             m.route.set('/');
         }
     },
 
     "/history": {
-        render: function() {
-            if (Auth.authenticated == true) {
+        render: () => {
+            if (Auth.authenticated) {
                 return m(Layout, { nav: "#!/history" }, m(History));
             }
 
