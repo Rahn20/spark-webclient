@@ -4,7 +4,7 @@
 
 "use strict";
 
-import m from "mithril";
+const m = require('mithril');
 
 const Layout = {
 
@@ -15,30 +15,39 @@ const Layout = {
         { name: "Historik", route: "#!/history" },
     ],
 
-    view: function (vnode) {
+    view: (vnode) => {
         let nav = vnode.attrs.nav;
 
         return [
-            m("div.top-header", m("h1", "Spark")),
-            m("nav.top-nav", m("ul", Layout.links.map(function(link) {
-                return m("li", [
-                    m("a", {
-                        href: link.route,
-                        class: nav == link.route ? "active" : null
-                    }, link.name)
-                ]);
-            }),
+            m("nav.navbar navbar-expand-lg navbar-dark bg-primary", [
+                m("div.container-fluid", [
+                    m("a.navbar-brand", "Spark"),
 
-            m("li.logout", m("a", { href: "#!/logout" }, "Logga ut"))),
-            ),
+                    m("div.navbar-collapse", [
+                        m("ul.navbar-nav me-auto", Layout.links.map(function(link) {
+                            return m("li.nav-item", [
+                                m("a.nav-link", {
+                                    href: link.route,
+                                    class: nav == link.route ? "active" : null
+                                }, link.name)
+                            ]);
+                        })),
 
-            m("main", vnode.children),
+                        m("div.d-flex", m("a.btn btn-secondary my-2 my-sm-0", { href: "#!/logout" }, "Logga ut")),
+                    ]),
+                ])
+            ]),
 
-            m("footer", [
+            m("main", [
+                m("img#startimage", { src: "img/background.png" }),
+                m("div.container", vnode.children),
+            ]),
+
+            m("footer#footer", [
                 m("p", m.trust("Copyright &copy; Spark 2022")),
             ])
         ];
     },
 };
 
-export { Layout };
+module.exports = Layout;
