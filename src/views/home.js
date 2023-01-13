@@ -4,18 +4,21 @@
 
 "use strict";
 
-import { Auth } from "../models/auth";
-import m from "mithril";
+const m = require('mithril');
+
+const Auth = require('./../models/auth');
+const Customer = require('./../models/customer');
+
 
 const Home = {
     oninit: () => {
-        Auth.checkAuth();
+        //Auth.checkAuth();
     },
-    view: function () {
+
+    view: () => {
         return m("div.home", [
             m("h1", "Välkommen till Spark kundens webbplats"),
 
-            // eslint-disable-next-line max-len
             m(
                 "p",
                 // eslint-disable-next-line max-len
@@ -23,30 +26,32 @@ const Home = {
             ),
 
             m("div.content", [
-                m("fieldset", [
-                    m("h3", "Logga in"),
-                    m(
-                        "form",
-                        {
+                m("div.login_content", [
+                    m("fieldset", [
+                        m("h3", "Logga in"),
+                        m("hr"),
+
+                        m("form", {
                             onsubmit: (event) => {
                                 event.preventDefault();
-                                Auth.login();
+                                let result = Auth.login();
+
+                                if (result) {
+                                    Customer.getCustomer();
+                                }
                             },
                         },
                         [
                             m("p", [
                                 m("label.label#email", "Email"),
-                                m(
-                                    "input.input[type=email][required=required]",
-                                    {
-                                        oninput: (event) => {
-                                            Auth.user.email =
-                                                event.target.value;
-                                        },
-                                        value: Auth.user.email,
-                                    }
-                                ),
+                                m("input.input[type=email][required=required]", {
+                                    oninput: (event) => {
+                                        Auth.user.email =
+                                        event.target.value;
+                                    }, value: Auth.user.email,
+                                }),
                             ]),
+
                             m("p", [
                                 m("label.label#password", "Lösenord"),
                                 m("input.input[type=password][required]", {
@@ -56,31 +61,30 @@ const Home = {
                                     value: Auth.user.password,
                                 }),
                             ]),
-                            m(
-                                "div#login",
-                                m("button.button[type=submit]", "Logga in")
-                            ),
-                        ]
-                    ),
 
-                    m("p", Auth.res),
-                ]),
+                            m("div#login", m("button.button btn btn-lg btn-primary[type=submit]", "Logga in")),
+                        ]),
 
-                m("p", m("a", { href: "#!/" }, "Logga in med GitHub")),
-                m(
-                    "div",
-                    m(
-                        "button.btn.btn-red",
+                        m("p", Auth.res),
+                    ]),
+
+
+
+                    m("div#google_login", m("button.btn btn-secondary [type=submit]",
                         { onclick: Auth.loginWithGoogle },
                         "Logga in med Google"
-                    )
-                ),
+                    )),
+                ]),
 
-                m("h3", "Har du inte ett konto, kan du skapa ett konto här:"),
-                m("p", m("a", { href: "#!/register" }, "Registrera dig")),
+
+                m("div#register_text", [
+                    m("h4", "Har du inte ett konto, kan du skapa ett konto här:"),
+                    m("p", m("a", { href: "#!/register" }, "Registrera dig")),
+                ])
             ]),
         ]);
     },
 };
 
-export { Home };
+
+module.exports = Home;
