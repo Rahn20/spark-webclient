@@ -1,76 +1,63 @@
 .home {
     width: 80%;
-    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
 
+    text-align: center;
+ 
     .content {
-        width: 70%;
+        width: 40rem;
         margin: auto;
         font-weight: bold;
         border: 3px solid #f1f1f1;
-        padding: 20px 10px 0;
-        text-align: center;
+        padding: 30px 0 30px 0;
         margin-top: 30px;
-        background-color: #d9d9d9;
 
-        h3 {
-            padding: 10px;
-        }
 
-        fieldset {
-            #email {
-                padding: 5px 15px;
-            }
-            
-            #password {
-                padding: 0 5px;
-            }
+        .login_content {
+            width: 15rem;
+            margin: auto;
+            text-align: left;
 
-            input[type=password], input[type=email]{
-                padding-right: 10px;
-            }
-
-            button[type=submit] {
-                background-color: #4CAF50;
-                cursor: pointer;
-                width: 10rem;
+            fieldset {
+                input[type=password], input[type=email], button[type=submit] {
+                    width: 100%;
+                    padding: 6px 0;
+                    margin: 4px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    box-sizing: border-box;
+                }
             }
 
-            #login {
-                padding: 3px 0 0 15px;
+
+            #google_login {
+                margin: 15px 0 30px 0;
             }
         }
-
-        p {
-            margin: 5px 10px 10px 0;
-        }
-
+        
         a {
-            color: #000066;
+            font-size: 19px;
         }
     }
 }
 
 
-button[type=submit]:hover {
-    background-color: #45a049;
-}
-
-input[type=password], input[type=email], input[type=text], button[type=submit] {
-    width: 13rem;
-    padding: 5px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-@media only screen and (max-width: 923px) {
+@media only screen and (max-width: 1207px) {
     .home {
         width: 100%;
-        padding-left: 5px;
+        padding-left: 15px;
+        text-align: left;
+
+        #register_text {
+            text-align: center;
+        }
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 664px) {
     .home {
         .content {
             width: 100%;
