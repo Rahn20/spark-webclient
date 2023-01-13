@@ -1,0 +1,36 @@
+
+#payments_info {
+    ul {
+        display: inline-flex;
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            border: 1px solid #333;
+            padding: 2rem;
+        }
+
+    }
+}
+
+
+// payments input
+.payment_method {
+    #payment_method {
+        padding: 6px;
+        margin: 10px;
+    }
+}
+
+.payment_balance {
+    #payment_balance {
+        padding: 3px;
+        margin: 10px;
+    }
+
+    .payment_balance_label {
+        padding-right: 52px;
+    }
+
+    padding-bottom: 15px;
+}
