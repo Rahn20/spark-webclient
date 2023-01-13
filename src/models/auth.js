@@ -1,26 +1,23 @@
 "use strict";
 
-const m = require("mithril");
+const m = require('mithril');
+const Customer = require('./customer');
 
 const Auth = {
     url: "http://localhost:1337/api/v1/auth/",
-    token: "",
-    authenticated: false,
     res: "",
     registerData: [],
+    //token: "",
+    authenticated: false,
 
     // users data
     user: {
-        id: "",
         email: "",
         password: "",
-        firstname: "",
-        lastname: "",
-        phone: "",
-        username: "",
     },
 
-    // log in user and add user data to user object.
+
+    // login user and add user id to user object.
     login: async () => {
         try {
             const result = await m.request({
@@ -32,18 +29,20 @@ const Auth = {
                 },
             });
 
-            Auth.user.firstname = result.user.first_name;
-            Auth.user.lastname = result.user.last_name;
-            Auth.user.username = result.user.username;
-            Auth.user.phone = result.user.phone;
-            Auth.user.id = result.user.id;
-            Auth.authenticated = true;
+
+            if (result.user.token) {
+                Auth.user.password = "";
+                Auth.authenticated = true;
+                return true;
+            } else {
+                return false;
+            }
         } catch (e) {
-            Auth.res =
-                "Något gick fel! antigen lösenordet eller mailadressen är fel.";
+            Auth.res = "Något gick fel! antigen lösenordet eller mailadressen är fel.";
             console.log(e);
         }
     },
+
 
     // register new customer
     register: async (customers) => {
@@ -74,11 +73,17 @@ const Auth = {
             }
         }
     },
+
+
     loginWithGoogle: () => {
         window.location.href = `${Auth.url}/google`;
+        Auth.checkAuth();
     },
-    checkAuth: () => {
-        return m
+
+
+    // check authenticat
+    checkAuth: async () => {
+        const res = await m
             .request({
                 method: "GET",
                 url: `${Auth.url}/success`,
@@ -86,21 +91,22 @@ const Auth = {
                     "Content-Type": "application/json",
                 },
                 withCredentials: true,
-            })
-            .then((res) => {
-                if (res.status === 200 && res.user) {
-                    console.log(res.user);
-
-                    Auth.user.id = res.user.id;
-                    Auth.user.firstname = res.user.first_name;
-                    Auth.user.lastname = res.user.last_name;
-                    Auth.user.username = res.user.username;
-                    Auth.user.phone = res.user.phone;
-                    Auth.user.email = res.user.email;
-                    Auth.user = Auth.authenticated = true;
-                }
             });
+
+        if (res.status === 200 && res.user) {
+            //console.log(res.user);
+            Customer.customer.id = res.user.id;
+            Customer.customer.first_name = res.user.first_name;
+            Customer.customer.last_name = res.user.last_name;
+            Customer.customer.username = res.user.username;
+            Customer.customer.phone = res.user.phone;
+
+            Auth.authenticated = true;
+        }
     },
+
+
+
     // Returns true if the username or email address exists.
     checkUser: (customers) => {
         let email = Auth.registerData["email"];
@@ -121,4 +127,4 @@ const Auth = {
     },
 };
 
-export { Auth };
+module.exports = Auth;
