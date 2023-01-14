@@ -5,7 +5,7 @@ const Customer = require('./customer');
 
 
 const Historys = {
-    url: "http://localhost:1337/api/v1/graphql",
+    url: process.env.API_URL,
     historyData: [],
 
     // get customer log
@@ -34,7 +34,10 @@ const Historys = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Historys.url,
+                url: `${Historys.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: { query, variables}
             });
 

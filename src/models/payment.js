@@ -5,7 +5,7 @@ const Customer = require('./customer');
 
 
 const Payments = {
-    url: "http://localhost:1337/api/v1/graphql",
+    url: process.env.API_URL,
     allPayments: [],
     res: "",
     money: null,
@@ -34,7 +34,10 @@ const Payments = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Payments.url,
+                url: `${Payments.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: { query: query, variables }
             });
 
@@ -62,7 +65,10 @@ const Payments = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Payments.url,
+                url: `${Payments.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: { query: mutation, variables }
             });
 
@@ -93,7 +99,10 @@ const Payments = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Payments.url,
+                url: `${Payments.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: { query: mutation, variables }
             });
 

@@ -6,7 +6,7 @@ const Auth = require('./auth');
 
 
 const Customer = {
-    url: "http://localhost:1337/api/v1/graphql",
+    url: process.env.API_URL,
     allCustomers: [],
     customer: {},
     account: {},
@@ -37,8 +37,11 @@ const Customer = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Customer.url,
-                body: { query: query, variables }
+                url: `${Customer.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: { query: query, variables },
             });
 
             //console.log(result.data.getCustomerByEmail);
@@ -67,24 +70,18 @@ const Customer = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Customer.url,
+                url: `${Customer.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: { query: query, variables }
             });
 
-            Customer.checkCustomerAcc(result.data.getAccountByCustomerId);
+            Customer.account = result.data.getAccountByCustomerId[0];
         } catch (e) {
             console.log(e);
         }
     },
-
-
-    // Check if the customer has registered a payment account.
-    checkCustomerAcc: (account) => {
-        if (account.length != 0) {
-            Customer.account = account[0];
-        }
-    },
-
 
     // Get all customers and add customer data to allCustomers list.
     getAllCustomers: async () => {
@@ -103,7 +100,10 @@ const Customer = {
         try {
             const result = await m.request({
                 method: "POST",
-                url: Customer.url,
+                url: `${Customer.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: { query }
             });
 
