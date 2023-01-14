@@ -22,7 +22,7 @@ const Home = {
             m(
                 "p",
                 // eslint-disable-next-line max-len
-                "Här får du en överblick över dina betalningar, historik över dina resor och konto infomation. Du har även möjlighet att ändra betlaningsmetoden, skapa ett konto och fylla på ditt konto med pengar."
+                "Här får du en överblick över dina betalningar, historik över dina resor och konto infomation. Du kan registrera dig som kund, logga in med email och lösenord eller med Google konto. Du har även möjlighet att ändra betlaningsmetoden och fylla på ditt bankkonto med pengar."
             ),
 
             m("div.content", [

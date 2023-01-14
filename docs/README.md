@@ -33,6 +33,6 @@ The customer can see a history of the trips, (the scooter he has ridden, the tim
 
 ## Payment page
 
-The customer can add money to their account (prepaid), or let the system withdraw money every month via a payment service. The customer can also see an overview of his payments, account number, the amount he paid and the payment date.
+The customer can add money to his account (prepaid), or let the system withdraw money every month via a payment service. The customer can also see an overview of his payments, account number, the amount he paid and the payment date.
 
 ![Payment page](paymentPage.png)
