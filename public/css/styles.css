@@ -61,7 +61,9 @@ footer {
   margin: 4px 0;
   display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box;
+}
+.home .content .login_content fieldset input[type=password], .home .content .login_content fieldset input[type=email] {
+  text-indent: 10px;
 }
 .home .content .login_content #google_login {
   margin: 15px 0 30px 0;
@@ -141,6 +143,9 @@ footer {
 .container #profile .account h4 {
   text-align: center;
   padding: 10px;
+}
+.container #profile .account p {
+  text-align: center;
 }
 
 @media only screen and (max-width: 944px) {
