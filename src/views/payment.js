@@ -8,13 +8,17 @@
 const m = require('mithril');
 const Payments = require('./../models/payment');
 const Customer = require('./../models/customer');
+const Auth = require('./../models/auth');
+
 
 const Payment = {
     oninit: () => {
-        Customer.getCustomerAccount();
-        Payments.getPayments();
-        Payments.res = "";
-        Payments.money = null;
+        if (Auth.user.email) {
+            Customer.getCustomerAccount();
+            Payments.getPayments();
+            Payments.res = "";
+            Payments.money = null;
+        }
     },
 
     view: () => {
@@ -66,7 +70,6 @@ const Payment = {
                     }
                 },
                 [
-
                     m("p", [
                         m("label.payment_balance_label[for=payment_balance]", "Lägg till pengar"),
                         m("input#payment_balance[type=number][required]", {
@@ -112,10 +115,10 @@ const Payment = {
             return [
                 m("h2", "Betalningar"),
                 m("hr"),
-                m("p", "Kunden har inte registrerat en betaltjänst.")
+                m("p", "Det finns inga betalningar att visa.")
             ];
         }
-    },
+    }
 };
 
 

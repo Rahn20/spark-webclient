@@ -12,7 +12,7 @@ const Customer = require('./../models/customer');
 
 const Home = {
     oninit: () => {
-        //Auth.checkAuth();
+        Auth.res = "";
     },
 
     view: () => {
@@ -46,8 +46,7 @@ const Home = {
                                 m("label.label#email", "Email"),
                                 m("input.input[type=email][required=required]", {
                                     oninput: (event) => {
-                                        Auth.user.email =
-                                        event.target.value;
+                                        Auth.user.email = event.target.value;
                                     }, value: Auth.user.email,
                                 }),
                             ]),
@@ -69,10 +68,14 @@ const Home = {
                     ]),
 
 
-
-                    m("div#google_login", m("button.btn btn-secondary [type=submit]",
-                        { onclick: Auth.loginWithGoogle },
-                        "Logga in med Google"
+                    m("div#google_login", m("button.btn btn-secondary [type=submit]", {
+                        oncreate: (vnode) => {
+                            vnode.dom.addEventListener("click", () => {
+                                Auth.loginWithGoogle;
+                                Auth.checkAuth();
+                            });
+                        }
+                    }, "Logga in med Google"
                     )),
                 ]),
 

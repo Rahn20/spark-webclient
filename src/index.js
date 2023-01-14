@@ -23,7 +23,7 @@ const Auth = require('./models/auth.js');
 m.route(document.body, "/", {
     "/": {
         render: () => {
-            if (Auth.authenticated) {
+            if (Auth.authorized) {
                 return m(Layout, { nav: "#!/" }, m(Profile));
             }
 
@@ -35,7 +35,7 @@ m.route(document.body, "/", {
 
     "/payment": {
         render: () => {
-            if (Auth.authenticated) {
+            if (Auth.authorized) {
                 return m(Layout, { nav: "#!/payment" }, m(Payment));
             }
 
@@ -46,7 +46,7 @@ m.route(document.body, "/", {
 
     "/register": {
         render: () => {
-            if (Auth.authenticated) {
+            if (Auth.authorized) {
                 return m(Layout, { nav: "#!/" }, m(Profile));
             }
 
@@ -54,22 +54,25 @@ m.route(document.body, "/", {
         }
     },
 
+
     "/logout": {
         render: () => {
-            if (Auth.authenticated) {
-                Auth.authenticated = false;
+            if (Auth.authorized) {
+                Auth.authorized = false;
             }
-            m.route.set('/');
+
+            return m.route.set('/');
         }
     },
 
+
     "/history": {
         render: () => {
-            if (Auth.authenticated) {
+            if (Auth.authorized) {
                 return m(Layout, { nav: "#!/history" }, m(History));
             }
 
-            m.route.set('/');
+            return m.route.set('/');
         },
     }
 });
