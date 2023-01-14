@@ -1,14 +1,14 @@
 "use strict";
 
 const m = require('mithril');
-const Customer = require('./customer');
+
 
 const Auth = {
-    url: "http://localhost:1337/api/v1/auth/",
+    url: process.env.API_URL,
     res: "",
     registerData: [],
     //token: "",
-    authenticated: false,
+    authorized: false,
 
     // users data
     user: {
@@ -16,23 +16,28 @@ const Auth = {
         password: "",
     },
 
+    // Google user data
+    oauth: {},
 
     // login user and add user id to user object.
     login: async () => {
         try {
             const result = await m.request({
                 method: "POST",
-                url: `${Auth.url}login`,
+                url: `${Auth.url}/auth/login`,
                 body: {
                     email: Auth.user.email,
                     password: Auth.user.password,
+                },
+                headers: {
+                    "Content-Type": "application/json",
                 },
             });
 
 
             if (result.user.token) {
                 Auth.user.password = "";
-                Auth.authenticated = true;
+                Auth.authorized = true;
                 return true;
             } else {
                 return false;
@@ -54,7 +59,7 @@ const Auth = {
             try {
                 await m.request({
                     method: "POST",
-                    url: `${Auth.url}register`,
+                    url: `${Auth.url}/auth/register`,
                     body: {
                         username: Auth.registerData["username"],
                         password: Auth.registerData["password"],
@@ -63,6 +68,9 @@ const Auth = {
                         firstName: Auth.registerData["firstName"],
                         lastName: Auth.registerData["lastName"],
                         roleId: "2",
+                    },
+                    headers: {
+                        "Content-Type": "application/json",
                     },
                 });
 
@@ -76,35 +84,26 @@ const Auth = {
 
 
     loginWithGoogle: () => {
-        window.location.href = `${Auth.url}/google`;
-        Auth.checkAuth();
+        window.location.href = `${Auth.url}/auth//google`;
     },
 
 
-    // check authenticat
+    // check google authentication
     checkAuth: async () => {
-        const res = await m
-            .request({
-                method: "GET",
-                url: `${Auth.url}/success`,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                withCredentials: true,
-            });
+        const res = await m.request({
+            method: "GET",
+            url: `${Auth.url}/auth/success`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            withCredentials: true,
+        });
 
         if (res.status === 200 && res.user) {
-            //console.log(res.user);
-            Customer.customer.id = res.user.id;
-            Customer.customer.first_name = res.user.first_name;
-            Customer.customer.last_name = res.user.last_name;
-            Customer.customer.username = res.user.username;
-            Customer.customer.phone = res.user.phone;
-
-            Auth.authenticated = true;
+            Auth.oauth = res.user;
+            Auth.authorized = true;
         }
     },
-
 
 
     // Returns true if the username or email address exists.
