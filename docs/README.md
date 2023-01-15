@@ -1,18 +1,17 @@
 # Customer website
 
-You can find here all parts (all pages) that have been working on in the repo.
-
+You can find all parts (all pages) here.
 
 ## Login page
 
-Customer can log in using either email address and password or using his google account.
+Customer can log in using either email address and password or using google account.
 
 ![Login page](loginPage.png)
 
 
 ## Register page
 
-Customer register form.
+Customer can sign up here.
 
 ![register page](registerPage.png)
 
@@ -26,7 +25,7 @@ Contains all customer profile information for the logged in customer.
 
 ## History page
 
-The customer can see a history of the trips, (the scooter he has ridden, the times and the positions)
+The customer can see a history of the trips.
 
 ![History page](historyPage.png)
 
