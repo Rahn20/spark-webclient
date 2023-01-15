@@ -64,6 +64,10 @@ module.exports = {
             directory: path.join(__dirname, 'public'),
         },
         hot: true,
-        compress: true,
+        compress: false,
     },
+
+    watchOptions: {
+        //poll: 1000,
+    }
 };
