@@ -1,11 +1,7 @@
 .home {
-    width: 80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -80%);
-
+    margin: auto;
     text-align: center;
+    margin-top: 120px;
  
     .content {
         width: 40rem;
@@ -49,9 +45,8 @@
 
 @media only screen and (max-width: 1207px) {
     .home {
-        width: 100%;
-        padding-left: 15px;
-        text-align: left;
+        text-align: start;
+        margin: 10px 10px 0 10px;
 
         #register_text {
             text-align: center;
