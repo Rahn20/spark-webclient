@@ -28,7 +28,6 @@ const Profile = {
                     m("div.profile", [
                         m("ul", [
                             m("li", m("strong", "Användarnamn: "), Customer.customer.username),
-                            // eslint-disable-next-line max-len
                             m("li", m("strong", "Namn: "), Customer.customer.first_name + " " + Customer.customer.last_name),
                             m("li", m("strong", "Mailadress: "),  Customer.customer.email),
                             m("li", m("strong", "Mobilnummer: "), Customer.customer.phone),
@@ -44,31 +43,30 @@ const Profile = {
                     ])
                 ])
             ];
-        } else {
-            return [
-                m("h2", "Kund profil"),
-                m("hr"),
+        }
 
-                m("div#profile", [
-                    m("div.circle-border", m("p", "profil")),
+        return [
+            m("h2", "Kund profil"),
+            m("hr"),
 
-                    m("div.profile", [
-                        m("ul", [
-                            m("li", m("strong", "Användarnamn: "), Auth.oauth.username),
-                            // eslint-disable-next-line max-len
-                            m("li", m("strong", "Namn: "), Auth.oauth.first_name + " " + Auth.oauth.last_name),
-                            m("li", m("strong", "Mailadress: "),  Auth.oauth.email),
-                            m("li", m("strong", "Mobilnummer: "), Auth.oauth.phone),
-                        ]),
+            m("div#profile", [
+                m("div.circle-border", m("p", "profil")),
 
-                        m("div.account", [
-                            m("h4", "Konto"),
-                            m("p", "Det finns inget konto att visa."),
-                        ])
+                m("div.profile", [
+                    m("ul", [
+                        m("li", m("strong", "Användarnamn: "), Auth.oauth.username),
+                        m("li", m("strong", "Namn: "), Auth.oauth.first_name + " " + Auth.oauth.last_name),
+                        m("li", m("strong", "Mailadress: "),  Auth.oauth.email),
+                        m("li", m("strong", "Mobilnummer: "), Auth.oauth.phone),
+                    ]),
+
+                    m("div.account", [
+                        m("h4", "Konto"),
+                        m("p", "Det finns inget konto att visa."),
                     ])
                 ])
-            ];
-        }
+            ])
+        ];
     },
 };
 

@@ -98,10 +98,11 @@
             2,
             "always"
         ],
-        "max-len": [
-            2,
-            120
-        ],
+
+        //"max-len": [
+        //    2,
+        //    120
+        //],
         "comma-style": [
             2,
             "last"

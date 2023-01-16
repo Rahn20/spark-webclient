@@ -111,13 +111,13 @@ const Payment = {
                     ])
                 ])
             ];
-        } else {
-            return [
-                m("h2", "Betalningar"),
-                m("hr"),
-                m("p", "Det finns inga betalningar att visa.")
-            ];
         }
+
+        return [
+            m("h2", "Betalningar"),
+            m("hr"),
+            m("p", "Det finns inga betalningar att visa.")
+        ];
     }
 };
 

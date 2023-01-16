@@ -12,6 +12,7 @@ const Customer = require('../models/customer');
 
 const Register = {
     oninit: () => {
+        Auth.res = "";
         Customer.getAllCustomers();
     },
 

@@ -23,7 +23,11 @@ const Layout = {
                 m("div.container-fluid", [
                     m("a.navbar-brand", "Spark"),
 
-                    m("div.navbar-collapse", [
+                    m("button.navbar-toggler[type=button][data-bs-toggle=collapse][data-bs-target=#navbarColor01][aria-controls=navbarColor01][aria-expanded=false][aria-label=Toggle navigation]",
+                        m("span.navbar-toggler-icon")
+                    ),
+
+                    m("div.collapse navbar-collapse #navbarColor01", [
                         m("ul.navbar-nav me-auto", Layout.links.map(function(link) {
                             return m("li.nav-item", [
                                 m("a.nav-link", {
