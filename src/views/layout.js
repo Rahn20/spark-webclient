@@ -10,7 +10,7 @@ const Layout = {
 
     // Only displayed when the customer is logged in
     links: [
-        { name: "konto", route: "#!/" },
+        { name: "konto", route: "#!/profile" },
         { name: "Betalningar", route: "#!/payment" },
         { name: "Historik", route: "#!/history" },
     ],
