@@ -7,8 +7,7 @@ const Auth = {
     url: process.env.API_URL,
     res: "",
     registerData: [],
-    //token: "",
-    authorized: false,
+    isLogin: false,
 
     // users data
     user: {
@@ -16,10 +15,8 @@ const Auth = {
         password: "",
     },
 
-    // Google user data
-    oauth: {},
 
-    // login user and add user id to user object.
+    // Returns true when user succeed with login, otherwise returns false
     login: async () => {
         try {
             const result = await m.request({
@@ -37,11 +34,10 @@ const Auth = {
 
             if (result.user.token) {
                 Auth.user.password = "";
-                Auth.authorized = true;
+                Auth.isLogin = true;
                 return true;
-            } else {
-                return false;
             }
+            return false;
         } catch (e) {
             Auth.res = "Något gick fel! antigen lösenordet eller mailadressen är fel.";
             console.log(e);
@@ -83,25 +79,30 @@ const Auth = {
     },
 
 
-    loginWithGoogle: () => {
-        window.location.href = `${Auth.url}/auth//google`;
+    loginWithGoogle: async () => {
+        window.location.href = `${Auth.url}/auth/google`;
+        localStorage.setItem("oauth", true);
     },
 
 
     // check google authentication
     checkAuth: async () => {
-        const res = await m.request({
-            method: "GET",
-            url: `${Auth.url}/auth/success`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            withCredentials: true,
-        });
+        try {
+            const res = await m.request({
+                method: "GET",
+                url: `${Auth.url}/auth/success`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            });
 
-        if (res.status === 200 && res.user) {
-            Auth.oauth = res.user;
-            Auth.authorized = true;
+            if (res.status === 200 && res.user) {
+                Auth.user.email = res.user.email;
+                Auth.isLogin = true;
+            }
+        } catch (e) {
+            console.log(e);
         }
     },
 

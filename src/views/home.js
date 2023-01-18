@@ -31,12 +31,12 @@ const Home = {
                         m("hr"),
 
                         m("form", {
-                            onsubmit: (event) => {
+                            onsubmit: async (event) => {
                                 event.preventDefault();
                                 let result = Auth.login();
 
                                 if (result) {
-                                    Customer.getCustomer();
+                                    await Customer.getCustomer();
                                 }
                             },
                         },
@@ -68,11 +68,16 @@ const Home = {
 
 
                     m("div#google_login", m("button.btn btn-secondary [type=submit]", {
-                        oncreate: (vnode) => {
+                        oncreate: async (vnode) => {
                             vnode.dom.addEventListener("click", () => {
-                                Auth.loginWithGoogle;
-                                Auth.checkAuth();
+                                Auth.loginWithGoogle();
                             });
+
+                            if (localStorage.getItem("oauth")) {
+                                localStorage.clear();
+                                await Auth.checkAuth();
+                                await Customer.getCustomer();
+                            }
                         }
                     }, "Logga in med Google"
                     )),
