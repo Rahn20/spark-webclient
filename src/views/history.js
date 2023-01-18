@@ -6,14 +6,11 @@
 
 const m = require('mithril');
 const Historys = require('./../models/history');
-const Auth = require('./../models/auth');
 
 
 const History = {
     oninit: () => {
-        if (Auth.user.email) {
-            Historys.getHistory();
-        }
+        Historys.getHistory();
     },
 
     view: () => {
