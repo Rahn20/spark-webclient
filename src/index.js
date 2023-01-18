@@ -23,31 +23,40 @@ const Auth = require('./models/auth.js');
 m.route(document.body, "/", {
     "/": {
         render: () => {
-            if (Auth.authorized) {
-                return m(Layout, { nav: "#!/" }, m(Profile));
+            if (Auth.isLogin) {
+                return m.route.set("/profile");
             }
 
-            //console.log(localStorage.getItem("id"));
             return m(Home);
+        }
+    },
+
+    "/profile": {
+        render: () => {
+            if (Auth.isLogin) {
+                return m(Layout, { nav: "#!/profile" }, m(Profile));
+            }
+
+            return m.route.set("/");
         }
     },
 
 
     "/payment": {
         render: () => {
-            if (Auth.authorized) {
+            if (Auth.isLogin) {
                 return m(Layout, { nav: "#!/payment" }, m(Payment));
             }
 
-            m.route.set('/');
+            return m.route.set("/");
         }
     },
 
 
     "/register": {
         render: () => {
-            if (Auth.authorized) {
-                return m(Layout, { nav: "#!/" }, m(Profile));
+            if (Auth.isLogin) {
+                return m(Layout, { nav: "#!/profile" }, m(Profile));
             }
 
             return m(Register);
@@ -57,22 +66,23 @@ m.route(document.body, "/", {
 
     "/logout": {
         render: () => {
-            if (Auth.authorized) {
-                Auth.authorized = false;
+            if (Auth.isLogin) {
+                Auth.isLogin = false;
+                localStorage.clear();
             }
 
-            return m.route.set('/');
+            return m.route.set("/");
         }
     },
 
 
     "/history": {
         render: () => {
-            if (Auth.authorized) {
+            if (Auth.isLogin) {
                 return m(Layout, { nav: "#!/history" }, m(History));
             }
 
-            return m.route.set('/');
+            return m.route.set("/");
         },
     }
 });
