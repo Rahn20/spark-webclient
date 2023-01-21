@@ -15,6 +15,7 @@ const Payment = require('./views/payment.js');
 const Register = require('./views/register.js');
 const Profile = require('./views/profile.js');
 const Home = require('./views/home.js');
+const UpdateProfile = require('./views/updateProfile');
 
 // models
 const Auth = require('./models/auth.js');
@@ -41,6 +42,15 @@ m.route(document.body, "/", {
         }
     },
 
+    "/update_profile": {
+        render: () => {
+            if (Auth.isLogin) {
+                return m(Layout, { nav: "#!/profile" }, m(UpdateProfile));
+            }
+
+            return m.route.set("/");
+        }
+    },
 
     "/payment": {
         render: () => {

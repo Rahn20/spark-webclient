@@ -1,0 +1,10 @@
+.update_profile {
+    width: 25rem;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .update_profile {
+        width: 100%;
+    }
+}
