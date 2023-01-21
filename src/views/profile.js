@@ -9,8 +9,9 @@ const Customer = require('../models/customer');
 
 
 const Profile = {
-    oninit: () => {
-        Customer.getCustomerAccount();
+    oninit: async () => {
+        await Customer.getCustomer();
+        await Customer.getCustomerAccount();
     },
 
     view: () => {
@@ -33,11 +34,13 @@ const Profile = {
                         m("h4", "Konto"),
                         m("ul", [
                             m("li", m("strong", "Betalningsmetod: "), Customer.account.payment_method),
-                            m("li", m("strong", "Saldot på konto: "), Customer.account.balance + " Kr")
+                            m("li", m("strong", "Saldot på konto: "), Customer.account.balance + " kr")
                         ])
                     ])
-                ])
-            ])
+                ]),
+
+                m("button.btn btn-info", m("a", { href: `#!/update_profile` }, "Uppdatera din profil")),
+            ]),
         ];
     },
 };
