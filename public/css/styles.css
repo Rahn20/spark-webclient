@@ -19,10 +19,14 @@ body {
 }
 
 .container {
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
 }
 .container h2 {
   margin-top: 30px;
+}
+
+.res {
+  padding: 10px;
 }
 
 footer {
@@ -143,8 +147,22 @@ footer {
 .container #profile .account p {
   text-align: center;
 }
+.container #profile button {
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+}
+.container #profile button a {
+  text-decoration: none;
+  color: #000;
+}
 
-@media only screen and (max-width: 944px) {
+@media only screen and (max-width: 997px) {
+  .container #profile {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 967px) {
   .container #profile {
     width: 100%;
   }
@@ -195,5 +213,14 @@ footer {
   #register_page {
     width: 100%;
     padding: 15px 0 0 2px;
+  }
+}
+.update_profile {
+  width: 25rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .update_profile {
+    width: 100%;
   }
 }

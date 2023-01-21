@@ -17,12 +17,10 @@
             justify-content: center;
     
             p {
-                
                 color: #000;
                 font-size: 30px;
                 text-align: center;
             }
-            
         }
     
         .profile {
@@ -46,11 +44,30 @@
                 text-align: center;
             }
         }
+
+        button {
+            display: block;
+            margin: auto;
+            margin-top: 2rem;
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
     }
 }
 
 
-@media only screen and (max-width: 944px) {
+@media only screen and (max-width: 997px) {
+    .container {
+        #profile {
+            width: 70%;
+        }
+    }
+}
+
+@media only screen and (max-width: 967px) {
     .container {
         #profile {
             width: 100%;
