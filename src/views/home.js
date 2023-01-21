@@ -7,8 +7,6 @@
 const m = require('mithril');
 
 const Auth = require('./../models/auth');
-const Customer = require('./../models/customer');
-
 
 const Home = {
     oninit: () => {
@@ -33,11 +31,7 @@ const Home = {
                         m("form", {
                             onsubmit: async (event) => {
                                 event.preventDefault();
-                                let result = Auth.login();
-
-                                if (result) {
-                                    await Customer.getCustomer();
-                                }
+                                await Auth.login();
                             },
                         },
                         [
@@ -63,7 +57,7 @@ const Home = {
                             m("div#login", m("button.button btn btn-lg btn-primary[type=submit]", "Logga in")),
                         ]),
 
-                        m("p", Auth.res),
+                        m("p.res", Auth.res),
                     ]),
 
 
@@ -76,7 +70,6 @@ const Home = {
                             if (localStorage.getItem("oauth")) {
                                 localStorage.clear();
                                 await Auth.checkAuth();
-                                await Customer.getCustomer();
                             }
                         }
                     }, "Logga in med Google"

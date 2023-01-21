@@ -10,6 +10,8 @@ const Customer = {
     allCustomers: [],
     customer: {},
     account: {},
+    updateProfile: {},
+    res: "",
 
 
     // get customer data and add it to customer object
@@ -44,7 +46,6 @@ const Customer = {
                 body: { query: query, variables },
             });
 
-            //console.log(result.data.getCustomerByEmail);
             Customer.customer = result.data.getCustomerByEmail[0].user;
         } catch (e) {
             console.log(e);
@@ -83,19 +84,25 @@ const Customer = {
         }
     },
 
-    // Get all customers and add customer data to allCustomers list.
-    getAllCustomers: async () => {
-        const query = `
-            query {
-                getAllCustomers {
-                    user {
-                        username
-                        email
-                    }
-
+    // update customer profile information
+    updateCustomer: async () => {
+        const mutation = `
+            mutation {
+                updateUserById(
+                    id: "${Auth.user.id}"
+                    first_name: "${Customer.updateProfile.firstName}"
+                    last_name: "${Customer.updateProfile.lastName}"
+                    username: "${Customer.customer.username}"
+                    password: "${Customer.updateProfile.password}"         
+                    email: "${Customer.customer.email}"
+                    phone: "${Customer.updateProfile.phone}"
+                    role_id: "2"
+                )
+                {
+                    id
                 }
             }
-      `;
+        `;
 
         try {
             const result = await m.request({
@@ -104,14 +111,16 @@ const Customer = {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: { query }
+                body: { query: mutation }
             });
 
-            Customer.allCustomers = result.data.getAllCustomers;
+            if (result.data.updateUserById === null) {
+                Customer.res = "Profilen har uppdaterats.";
+            }
         } catch (e) {
             console.log(e);
         }
-    }
+    },
 };
 
 
