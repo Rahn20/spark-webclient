@@ -4,7 +4,8 @@
   "description": "Spark project for Vteam course at BTH, this is Web client for customers.",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc --all mocha",
+    "test": "nyc --all mocha 'test/*.js'",
+    "mocha": "mocha 'test/*.js' --timeout 10000",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "style": "sass src/base.scss public/css/styles.css --no-source-map",
@@ -16,13 +17,14 @@
     "docker": "webpack-dev-server --host 0.0.0.0 --config webpack.dev.config.js"
   },
   "keywords": [
+    "javascript",
     "mithril",
-    "sass",
+    "scss",
     "webpack"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rahn20/spark-webclient.git#main"
+    "url": "https://github.com/Rahn20/spark-webclient.git"
   },
   "author": "Ranim Hanna",
   "license": "ISC",
