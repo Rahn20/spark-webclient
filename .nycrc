@@ -7,7 +7,7 @@
   ],
   "check-coverage": false,
   "include": [
-    "src/models/*"
+    "src/views/*"
   ],
   "cache": true
 }
