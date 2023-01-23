@@ -21,7 +21,6 @@ const Payment = {
     view: () => {
         let count = 1;
 
-
         return [
             m("h2", "Betalningar"),
             m("hr"),
@@ -88,6 +87,7 @@ const Payment = {
                             m("th", { scope: "col" }, "Nr"),
                             m("th", { scope: "col" }, "Namn"),
                             m("th", { scope: "col" }, "Konto nummer"),
+                            m("th", { scope: "col" }, "Betalningsmetod"),
                             m("th", { scope: "col" }, "Summan"),
                             m("th", { scope: "col" }, "Datum"),
 
@@ -100,6 +100,7 @@ const Payment = {
                                 m("td", count++),
                                 m("td", res.customer_name),
                                 m("td", res.account_id),
+                                m("td", res.payment_method),
                                 m("td", res.total + "kr"),
                                 m("td", res.date),
                             ]);
