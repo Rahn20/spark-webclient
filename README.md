@@ -6,14 +6,11 @@
 
 # Spark-webclient
 
-This repository is part of a group project in Program development in virtual team course (vteam) at [Blekinge Institute of Technology](https://www.bth.se/). The group project consists of several parts, and this is one of them.
-
-**The application is under development.**
-
+This repository is part of a group project in Program development in virtual team course (Vteam) at [Blekinge Institute of Technology](https://www.bth.se/). The group project consists of several parts, and this is one of them.
 
 ![Payment page](docs/paymentPage.png)
 
-## Technologies and frameworks Used
+## Technologies and frameworks used
 * Mithril.js
 * Webpack
 * Scss
@@ -49,7 +46,7 @@ docker run --rm -it -p 1338:1338 webclient
 
 ### Installation
 
-To run the webclient locally, you need [Nodejs](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed on your machine. Once you have Node.js and npm installed clone this repo, go to spark-webclient and run:
+To run the webclient locally, you need [Nodejs](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed on your machine. Once you have Node.js and npm installed, clone this repo, move to spark-webclient and run:
 
 ```
 npm install
@@ -86,16 +83,26 @@ These packages have been used to test the application.
 * [Chai](https://www.npmjs.com/package/chai)
 * [Mithril-query](https://www.npmjs.com/package/mithril-query)
 * [Istanbul](https://www.npmjs.com/package/nyc)
-
+* [ESLint](https://www.npmjs.com/package/eslint)
+* [Sinon.JS](https://www.npmjs.com/package/sinon)
 
 You can run your tests using this command.
+```
+npm run mocha
+```
 
+Run tests and view code coverage
 ```
 npm run test
 ```
 
-To clean your code coverage you can run.
-
+To clean your code coverage you can use.
 ```
 npm run clean-cov
+```
+
+#### ESLint
+
+```
+npm run lint
 ```

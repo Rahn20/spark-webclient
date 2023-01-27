@@ -1,4 +1,4 @@
-# Customer website
+# Customer webpage
 
 You can find all parts (all pages) here.
 
@@ -23,15 +23,22 @@ Contains all customer profile information for the logged in customer.
 ![Profile page](profilePage.png)
 
 
+## Update profile page
+
+The customer can update his profile information.
+
+![Profile page](updateProfilePage.png)
+
+
 ## History page
 
-The customer can see a history of the trips.
+The customer can see an overview of all the trips he has made (the scooter he had rented, start and end date/time, start and end locations)
 
 ![History page](historyPage.png)
 
 
 ## Payment page
 
-The customer can add money to his account (prepaid), or let the system withdraw money every month via a payment service. The customer can also see an overview of his payments, account number, the amount he paid and the payment date.
+The customer can add money to his account and change the payment method. The customer can also see an overview of his payments, account number, the amount he paid, the payment method and payment date.
 
 ![Payment page](paymentPage.png)
