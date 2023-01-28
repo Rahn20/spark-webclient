@@ -62,20 +62,6 @@ If you change the style, then you can run ```npm run style```.
 
 Navigate to ```http://localhost:1338``` to view the webpage. The app will automatically reload if you change any of the source files. If you want to change the port, you can do it from webpack.dev.config.js.
 
-If you get any problems that the server is still running in the background when you try to press CTRL + C to stop it and run it again. Then you need to stop it manually using the *taskkill* command or change the port number if you want. Use the *netstat* command to list all the active connections and the ports they are using. 
-
-```
-netstat -a -o -n | grep 127.0.0.1:1338
-```
-
-We are looking for local address 127.0.0.1:1338 that has the state LISTENING, check the PID that's the connection has and run:
-
-```
-taskkill /F /PID <process-id>
-```
-
-Replace process-id with the process ID of the process you want to stop. The /F flag forces the process to stop, and the /PID flag specifies the process ID.
-
 ### Testing
 
 These packages have been used to test the application.
