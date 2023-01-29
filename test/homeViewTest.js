@@ -7,6 +7,7 @@ let mq = require('mithril-query');
 const chai = require('chai');
 const sinon = require('sinon');
 const expect = chai.expect;
+const assert = chai.assert;
 
 // views
 const Home = require('../src/views/home');
@@ -35,16 +36,6 @@ describe("Test home view", () => {
             output.should.have("fieldset > form");
         });
 
-
-        it("should render login with google", () => {
-            const output = mq(Home);
-
-            output.should.have("div#google_login > button");
-            output.should.contain("Logga in med Google");
-            output.click('.btn');
-        });
-
-
         it("should navigate to register page on click", () => {
             const output = mq(Home);
 
@@ -59,7 +50,7 @@ describe("Test home view", () => {
     });
 
 
-    describe("Test login", () => {
+    describe("Test login with email and password", () => {
         let request, loginMock;
 
         beforeEach(() => {
@@ -85,6 +76,30 @@ describe("Test home view", () => {
             expect(request.calledOnce).to.be.true;
             expect(Auth.user.email).to.equal("test@example.com");
             expect(Auth.user.password).to.equal("password");
+        });
+    });
+
+
+    describe("Test login with Google", () => {
+        let googleLoginMock;
+
+        beforeEach(() => {
+            googleLoginMock = sinon.stub(Auth, "loginWithGoogle");
+        });
+
+        afterEach(() => {
+            Auth.loginWithGoogle.restore();
+        });
+
+
+        it("should login customer with Google", () => {
+            const output = mq(Home);
+
+            output.should.have("div#google_login > button");
+            output.should.contain("Logga in med Google");
+            output.click(".btn.btn-secondary");
+
+            assert.isTrue(googleLoginMock.calledOnce);
         });
     });
 });
