@@ -51,7 +51,7 @@ module.exports = {
     devServer: {
 
         headers: {
-            "Content-Security-Policy": "default-src 'self' http://localhost:1337; connect-src 'self' http://localhost:1337;  font-src *; style-src *; img-src * data: content:; script-src-elem 'self' https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js",
+            "Content-Security-Policy": "default-src 'self' http://localhost:1337 http://localhost; connect-src 'self' http://localhost:1337 http://localhost;  font-src *; style-src *; img-src * data: content:; script-src-elem 'self' https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js",
         },
         port: port,
         open: openBrowser,
@@ -67,6 +67,6 @@ module.exports = {
     },
 
     watchOptions: {
-        poll: 1000,
+        //poll: 1000,
     }
 };
