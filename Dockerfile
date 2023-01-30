@@ -10,7 +10,7 @@ RUN npm install
 #COPY / .
 COPY ./src ./src
 COPY ./public ./public
-COPY .env.example ./
+COPY .env.example ./.env
 COPY webpack.dev.config.js ./
 
 
