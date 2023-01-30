@@ -6,7 +6,7 @@ You can find all parts (all pages) here.
 
 Customer can log in using either email address and password or using google account.
 
-![Login page](loginPage.png)
+![Login page](homePage.png)
 
 
 ## Register page

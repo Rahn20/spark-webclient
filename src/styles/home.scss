@@ -1,4 +1,5 @@
 .home {
+    width: 1000px;
     margin: auto;
     text-align: center;
     margin-top: 120px;
@@ -32,7 +33,7 @@
             }
 
             #google_login {
-                margin: 15px 0 30px 0;
+                margin: -13px 0 30px 0;
             }
         }
         
@@ -43,19 +44,25 @@
 }
 
 
-@media only screen and (max-width: 1207px) {
+@media only screen and (max-width: 1038px) {
     .home {
-        text-align: start;
-        margin: 10px 10px 0 10px;
-
-        #register_text {
-            text-align: center;
-        }
+        width: 100%;
     }
 }
 
 @media only screen and (max-width: 664px) {
     .home {
+        margin-top: 10px;
+
+        h1, p {
+            text-align: start;
+            padding-left: 10px;
+        }
+
+        #register_text p {
+            text-align: center;
+        }
+
         .content {
             width: 100%;
         }
